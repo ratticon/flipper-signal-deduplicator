@@ -145,18 +145,19 @@ def copyUnique(hash_dictionary={'hash': ['file1', 'file2']}, output_path='unique
     if not query_yes_no(f"\nCopy {len(hash_dictionary)} unique signals to '{output_path}'?", "yes"):
         return False
     # Check if output folder exists
-    print(f"Checking if '{output_path}' exists...   ", end='')
+    print(f"Checking if '{output_path}' directory exists...   ", end='')
     if not os.path.exists(output_path):
-        print(f"no\nCreating '{output_path}'... ", end='')
+        print(f"no\nCreating '{output_path}' directory... ", end='')
         try:
             os.makedirs(output_path)
         except Exception:
             print("failed. Aborting...")
             return False
+        print('done')
     else:
         print("yes")
     # Check if output folder is empty
-    print(f"Checking if '{output_path}' is empty... ", end='')
+    print(f"Checking if '{output_path}' directory is empty... ", end='')
     if len(os.listdir(output_path)) > 0:
         print("no")
         # Ask for confirmation to clear it if not
